@@ -30,3 +30,12 @@ body {
 #amarelo {
   background-color: yellow;
 }
+
+#pixel-board {
+  border: black solid 1px;
+  display: inline-block;
+}
+
+.pixel {
+  background-color: white;
+}
