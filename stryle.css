@@ -34,8 +34,15 @@ body {
 #pixel-board {
   border: black solid 1px;
   display: inline-block;
+  width: 250px;
+  height: 250px;
+  padding: 10px;
 }
 
 .pixel {
   background-color: white;
+  width: 40px;
+  height: 40px;
+  border: solid black 1px;
+  display: inline-block;
 }

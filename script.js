@@ -30,3 +30,12 @@ function chamandoPallete() {
 }
 chamandoPallete();
 
+function createSquares() {
+  const section = document.getElementById('pixel-board');
+  for (let index = 0; index < 25; index += 1) {
+    const squares = document.createElement('div');
+    squares.className = 'pixel';
+    section.appendChild(squares);
+  }
+}
+createSquares();
