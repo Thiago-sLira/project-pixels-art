@@ -19,12 +19,14 @@ botaoCorAleatoria.addEventListener('click', () => {
   localStorage.setItem('colorPalette', JSON.stringify(coresStorage));
 });
 
+// chamando do localStorage
 function chamandoPallete() {
-  if (localStorage.getItem('colorPallete')) {
-    const savedPallete = JSON.parse(localStorage.getItem('colorPallete'));
+  if (localStorage.getItem('colorPalette')) {
+    const savedPallete = JSON.parse(localStorage.getItem('colorPalette'));
     for (let i = 0; i < paletaCores.length; i += 1) {
       paletaCores[i].style.backgroundColor = savedPallete[i];
     }
   }
 }
 chamandoPallete();
+
