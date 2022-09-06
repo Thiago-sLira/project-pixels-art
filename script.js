@@ -12,7 +12,7 @@ botaoCorAleatoria.addEventListener('click', () => {
     let hashtag = '#';
     for (let index = 0; index < 6; index += 1) {
       hashtag += caracteres[Math.floor(Math.random() * caracteres.length)];
-    } // fonte: https://www.horadecodar.com.br/2022/01/16/gerar-cor-aleatoria-com-javascript/
+    }
     paletaCores[i].style.backgroundColor = hashtag;
     coresStorage.push(hashtag);
   }
@@ -30,6 +30,7 @@ function chamandoPallete() {
 }
 chamandoPallete();
 
+// criando divs com classe;
 function createSquares() {
   const section = document.getElementById('pixel-board');
   for (let index = 0; index < 25; index += 1) {
@@ -39,3 +40,17 @@ function createSquares() {
   }
 }
 createSquares();
+
+// // alterando a classe ao ser clicada;
+function changeClass(event) {
+  const classSelected = document.querySelector('.selected');
+  classSelected.classList.remove('selected');
+  event.target.classList.add('selected');
+}
+
+
+  for (let index = 0; index < paletaCores.length; index += 1) {
+    paletaCores[index].addEventListener('click', changeClass);
+  }
+
+
