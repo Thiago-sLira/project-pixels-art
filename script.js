@@ -1,6 +1,7 @@
 // adicionando aleatoriedade nas cores da paleta
 const botaoCorAleatoria = document.getElementById('button-random-color');
 const paletaCores = document.querySelectorAll('.color');
+// const buttonClear = document.getElementById('clear-board');
 
 // salvando no localStorage
 botaoCorAleatoria.addEventListener('click', () => {
@@ -26,6 +27,7 @@ function chamandoPallete() {
     for (let i = 0; i < paletaCores.length; i += 1) {
       paletaCores[i].style.backgroundColor = savedPallete[i];
     }
+    // paletaCores[0].classList.add('selected');
   }
 }
 chamandoPallete();
@@ -41,10 +43,10 @@ function createSquares() {
 }
 createSquares();
 
-// // alterando a classe ao ser clicada;
+// alterando a classe ao ser clicada;
 function changeClass(event) {
-  const classSelected = document.querySelector('.selected');
-  classSelected.classList.remove('selected');
+  const classSelected = document.querySelectorAll('.selected');
+  classSelected[0].classList.remove('selected');
   event.target.classList.add('selected');
 }
 
@@ -54,3 +56,20 @@ function catColor() {
   }
 }
 catColor();
+
+const square = document.querySelectorAll('.pixel');
+
+// pintando os pixels
+function printColor(event) {
+  const classSelected = document.querySelector('.selected');
+  const arroz = event.target;
+  arroz.style.backgroundColor = window.getComputedStyle(classSelected, null).backgroundColor; // https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+}
+
+for (let index = 0; index < square.length; index += 1) {
+  square[index].addEventListener('click', printColor);
+}
+
+// buttonClear.addEventListener('click', () => {
+
+// })
