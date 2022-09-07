@@ -1,7 +1,7 @@
 // adicionando aleatoriedade nas cores da paleta
 const botaoCorAleatoria = document.getElementById('button-random-color');
 const paletaCores = document.querySelectorAll('.color');
-// const buttonClear = document.getElementById('clear-board');
+const buttonClear = document.getElementById('clear-board');
 
 // salvando no localStorage
 botaoCorAleatoria.addEventListener('click', () => {
@@ -70,6 +70,8 @@ for (let index = 0; index < square.length; index += 1) {
   square[index].addEventListener('click', printColor);
 }
 
-// buttonClear.addEventListener('click', () => {
-
-// })
+buttonClear.addEventListener('click', () => {
+  for (let index = 0; index < square.length; index += 1) {
+    square[index].style.backgroundColor = '#ffffff';
+  }
+});
