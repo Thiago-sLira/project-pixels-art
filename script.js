@@ -59,19 +59,40 @@ catColor();
 
 const square = document.querySelectorAll('.pixel');
 
+// salvado a os pixels no localStorage
+function saveLocal() {
+  const savedStorage = [];
+  for (let i = 0; i < square.length; i += 1) {
+    savedStorage[i] = square[i].style.backgroundColor;
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(savedStorage));
+}
+
 // pintando os pixels
 function printColor(event) {
   const classSelected = document.querySelector('.selected');
   const arroz = event.target;
   arroz.style.backgroundColor = window.getComputedStyle(classSelected, null).backgroundColor; // https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+  saveLocal();
 }
 
 for (let index = 0; index < square.length; index += 1) {
   square[index].addEventListener('click', printColor);
 }
 
+// botão de limpar os pixels
 buttonClear.addEventListener('click', () => {
   for (let index = 0; index < square.length; index += 1) {
     square[index].style.backgroundColor = '#ffffff';
   }
 });
+
+// resgatando do localStorage
+let pegaColor = localStorage.getItem('pixelBoard');
+
+if (pegaColor) {
+  pegaColor = JSON.parse(pegaColor);
+  for (let i = 0; i < pegaColor.length; i += 1) {
+    square[i].style.backgroundColor = pegaColor[i];
+  }
+}
