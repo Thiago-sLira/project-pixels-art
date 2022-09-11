@@ -91,14 +91,14 @@ buttonClear.addEventListener('click', () => {
 });
 
 // resgatando do localStorage
-let pegaColor = localStorage.getItem('pixelBoard');
+// let pegaColor = localStorage.getItem('pixelBoard');
 
-if (pegaColor) {
-  pegaColor = JSON.parse(pegaColor);
-  for (let i = 0; i < pegaColor.length; i += 1) {
-    square[i].style.backgroundColor = pegaColor[i];
-  }
-}
+// if (pegaColor) {
+//   pegaColor = JSON.parse(pegaColor);
+//   for (let i = 0; i < pegaColor.length; i += 1) {
+//     square[i].style.backgroundColor = pegaColor[i];
+//   }
+// }
 
 // botão VQV
 
