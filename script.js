@@ -2,6 +2,8 @@
 const botaoCorAleatoria = document.getElementById('button-random-color');
 const paletaCores = document.querySelectorAll('.color');
 const buttonClear = document.getElementById('clear-board');
+const buttonVQV = document.getElementById('generate-board');
+const inputNumber = document.querySelectorAll('board-size');
 
 // salvando no localStorage
 botaoCorAleatoria.addEventListener('click', () => {
@@ -84,6 +86,7 @@ for (let index = 0; index < square.length; index += 1) {
 buttonClear.addEventListener('click', () => {
   for (let index = 0; index < square.length; index += 1) {
     square[index].style.backgroundColor = '#ffffff';
+    localStorage.removeItem('pixelBoard');
   }
 });
 
@@ -96,3 +99,11 @@ if (pegaColor) {
     square[i].style.backgroundColor = pegaColor[i];
   }
 }
+
+// botão VQV
+
+// Alterando o tamanho dos pixels
+// buttonVQV(generate-board) inputNumber(board-size)
+// buttonVQV.addEventListener('click', () => {
+  
+// });

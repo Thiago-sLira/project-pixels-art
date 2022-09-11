@@ -33,10 +33,9 @@ body {
   background-color: yellow;
 }
 
-#clear-board {
-  display: block;
-  margin-left: 438px;
-  margin-bottom: 10px;
+.Buttons {
+  display: flex;
+  justify-content: center;
 }
 
 #pixel-board {
@@ -47,6 +46,7 @@ body {
   padding: 10px;
   border-radius: 5px;
   background-color: white;
+  margin-top: 10px;
 }
 
 .pixel {
