@@ -17,7 +17,6 @@
 
         <div id="color-palette">
             <div class="color selected" id="preto">
-                <p></p>
             </div>
             <div class="color" id="vermelho">
                 <p></p>
@@ -31,10 +30,12 @@
         </div>
         <section class="Buttons">
             <button id="clear-board">Limpar</button>
-            <input type="number" id="board-size" value="5">
+            <input type="number" id="board-size" min="1">
             <button id="generate-board">VQV</button>
         </section>
-        <section id="pixel-board"></section>
+        <div class="container">
+            <section id="pixel-board"></section>
+        </div>
     </main>
     <button id="button-random-color">Cores aleatórias</button>
 </body>

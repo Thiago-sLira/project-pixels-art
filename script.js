@@ -3,7 +3,7 @@ const botaoCorAleatoria = document.getElementById('button-random-color');
 const paletaCores = document.querySelectorAll('.color');
 const buttonClear = document.getElementById('clear-board');
 const buttonVQV = document.getElementById('generate-board');
-const inputNumber = document.querySelectorAll('board-size');
+// const inputNumber = document.querySelector('#board-size').value;
 
 // salvando no localStorage
 botaoCorAleatoria.addEventListener('click', () => {
@@ -35,15 +35,20 @@ function chamandoPallete() {
 chamandoPallete();
 
 // criando divs com classe;
-function createSquares() {
+function createSquares(numero) {
   const section = document.getElementById('pixel-board');
-  for (let index = 0; index < 25; index += 1) {
+  for (let index = 0; index < numero; index += 1) {
+    // squares.className = 'pixel';
     const squares = document.createElement('div');
-    squares.className = 'pixel';
     section.appendChild(squares);
+    for (let i = 0; i < numero; i += 1) {
+      const squaresDiv = document.createElement('div');
+      squaresDiv.className = 'pixel';
+      squares.appendChild(squaresDiv);
+    }
   }
 }
-createSquares();
+createSquares(5);
 
 // alterando a classe ao ser clicada;
 function changeClass(event) {
@@ -59,7 +64,7 @@ function catColor() {
 }
 catColor();
 
-const square = document.querySelectorAll('.pixel');
+let square = document.querySelectorAll('.pixel');
 
 // salvado a os pixels no localStorage
 function saveLocal() {
@@ -78,9 +83,16 @@ function printColor(event) {
   saveLocal();
 }
 
-for (let index = 0; index < square.length; index += 1) {
-  square[index].addEventListener('click', printColor);
-}
+// for (let index = 0; index < square.length; index += 1) {
+//   square[index].addEventListener('click', printColor);
+// }
+
+function updateSquare() {
+  square = document.querySelectorAll('.pixel');
+  for (let index = 0; index < square.length; index += 1) {
+    square[index].addEventListener('click', printColor);
+  }
+} updateSquare();
 
 // botão de limpar os pixels
 buttonClear.addEventListener('click', () => {
@@ -91,19 +103,49 @@ buttonClear.addEventListener('click', () => {
 });
 
 // resgatando do localStorage
-// let pegaColor = localStorage.getItem('pixelBoard');
-
-// if (pegaColor) {
-//   pegaColor = JSON.parse(pegaColor);
-//   for (let i = 0; i < pegaColor.length; i += 1) {
-//     square[i].style.backgroundColor = pegaColor[i];
-//   }
-// }
-
-// botão VQV
+function catchColor() {
+  let pegaColor = localStorage.getItem('pixelBoard');
+  if (pegaColor) {
+    pegaColor = JSON.parse(pegaColor);
+    for (let i = 0; i < square.length; i += 1) {
+      square[i].style.backgroundColor = pegaColor[i];
+    }
+  }
+} catchColor();
 
 // Alterando o tamanho dos pixels
 // buttonVQV(generate-board) inputNumber(board-size)
-// buttonVQV.addEventListener('click', () => {
-  
-// });
+let pixels = document.querySelectorAll('#pixel-board > div');
+
+function removeFilho() {
+  pixels = document.querySelectorAll('#pixel-board > div');
+  for (let i = 0; i < pixels.length; i += 1) {
+    pixels[i].parentNode.removeChild(pixels[i]);
+  }
+}
+
+function botao() {
+  let inputNumber = document.querySelector('#board-size').value;
+  if (inputNumber === '') {
+    alert('Board inválido!');
+  }
+  if (inputNumber < 5) {
+    inputNumber = 5;
+  } else if (inputNumber > 50) {
+    inputNumber = 50;
+  }
+  removeFilho();
+  createSquares(inputNumber);
+  updateSquare();
+  localStorage.setItem('boardSize', inputNumber);
+}
+
+buttonVQV.addEventListener('click', botao);
+
+const pegaSquare = localStorage.getItem('boardSize');
+if (pegaSquare) {
+  removeFilho();
+  createSquares(pegaSquare);
+  updateSquare();
+  catchColor();
+}

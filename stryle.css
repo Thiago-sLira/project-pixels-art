@@ -1,6 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   text-align: center;
   background-color: beige;
+  background-image: url('fundo-da-tela-na-cor-cinzenta-neutra-textura-de-linho-66181500.jpg');
 }
 
 .color-palette {
@@ -40,13 +47,14 @@ body {
 
 #pixel-board {
   border: black solid 1px;
-  display: inline-block;
-  width: 250px;
-  height: 250px;
+  display: flex;
   padding: 10px;
-  border-radius: 5px;
-  background-color: white;
+  border-radius: 10px;
+  background-color: wheat;
   margin-top: 10px;
+  justify-content: center;
+  flex-flow: nowrap column;
+  line-height: 0px;
 }
 
 .pixel {
@@ -55,10 +63,15 @@ body {
   height: 40px;
   border: solid black 1px;
   display: inline-block;
-  margin: 3px;
   border-radius: 5px;
 }
 
 #button-random-color {
   margin-top: 10px;
+}
+
+.container {
+  display: flex;
+  /* width: 100%; */
+  justify-content: center;
 }
