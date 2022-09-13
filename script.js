@@ -1,4 +1,5 @@
 // adicionando aleatoriedade nas cores da paleta
+
 const botaoCorAleatoria = document.getElementById('button-random-color');
 const paletaCores = document.querySelectorAll('.color');
 const buttonClear = document.getElementById('clear-board');
@@ -6,6 +7,7 @@ const buttonVQV = document.getElementById('generate-board');
 // const inputNumber = document.querySelector('#board-size').value;
 
 // salvando no localStorage
+
 botaoCorAleatoria.addEventListener('click', () => {
   const coresStorage = [];
   coresStorage.push('#000000');
@@ -23,6 +25,7 @@ botaoCorAleatoria.addEventListener('click', () => {
 });
 
 // chamando do localStorage
+
 function chamandoPallete() {
   if (localStorage.getItem('colorPalette')) {
     const savedPallete = JSON.parse(localStorage.getItem('colorPalette'));
@@ -35,6 +38,7 @@ function chamandoPallete() {
 chamandoPallete();
 
 // criando divs com classe;
+
 function createSquares(numero) {
   const section = document.getElementById('pixel-board');
   for (let index = 0; index < numero; index += 1) {
@@ -51,6 +55,7 @@ function createSquares(numero) {
 createSquares(5);
 
 // alterando a classe ao ser clicada;
+
 function changeClass(event) {
   const classSelected = document.querySelectorAll('.selected');
   classSelected[0].classList.remove('selected');
@@ -67,6 +72,7 @@ catColor();
 let square = document.querySelectorAll('.pixel');
 
 // salvado a os pixels no localStorage
+
 function saveLocal() {
   const savedStorage = [];
   for (let i = 0; i < square.length; i += 1) {
@@ -76,6 +82,7 @@ function saveLocal() {
 }
 
 // pintando os pixels
+
 function printColor(event) {
   const classSelected = document.querySelector('.selected');
   const arroz = event.target;
@@ -95,6 +102,7 @@ function updateSquare() {
 } updateSquare();
 
 // botão de limpar os pixels
+
 buttonClear.addEventListener('click', () => {
   for (let index = 0; index < square.length; index += 1) {
     square[index].style.backgroundColor = '#ffffff';
@@ -103,6 +111,7 @@ buttonClear.addEventListener('click', () => {
 });
 
 // resgatando do localStorage
+
 function catchColor() {
   let pegaColor = localStorage.getItem('pixelBoard');
   if (pegaColor) {
@@ -115,6 +124,7 @@ function catchColor() {
 
 // Alterando o tamanho dos pixels
 // buttonVQV(generate-board) inputNumber(board-size)
+
 let pixels = document.querySelectorAll('#pixel-board > div');
 
 function removeFilho() {
